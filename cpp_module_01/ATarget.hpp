@@ -1,5 +1,4 @@
-#ifndef ATARGET_HPP
-# define ATARGET_HPP
+#pragma once
 
 #include <iostream>
 #include "ASpell.hpp"
@@ -9,22 +8,27 @@ class ATarget {
 		std::string type;
 	
 	public:
-		ATarget();
-		ATarget(ATarget const &x);
+		ATarget() {}
+		ATarget(ATarget const &x)
+		{
+			*this = x;
+		}
 		ATarget(std::string type): type(type) {}
 
-		virtual ~ATarget();
+		virtual ~ATarget() {}
 
-		ATarget	&operator=(ATarget const &x);
+		ATarget	&operator=(ATarget const &x)
+		{
+			type = x.type;
+			return *this;
+		}
 
 		std::string const	&getType() const {	return type;	}
 
 		virtual ATarget		*clone() const = 0;
 
-		void				getHitBySpell(ASpell const &spell)
+		void				getHitBySpell(ASpell const &spell) const
 		{
 			std::cout << type << " has been " << spell.getEffects() << "!" << std::endl;
 		}
 };
-
-#endif

@@ -1,9 +1,8 @@
-#ifndef FWOOSH_HPP
-# define FWOOSH_HPP
+#pragma once
 
 #include "ASpell.hpp"
 
-class Fwoosh: ASpell {
+class Fwoosh: public ASpell {
 	public:
 		Fwoosh()
 		{
@@ -18,6 +17,7 @@ class Fwoosh: ASpell {
 		{
 			name = x.name;
 			effects = x.effects;
+			return *this;
 		}
 
 		ASpell	*clone() const
@@ -25,5 +25,3 @@ class Fwoosh: ASpell {
 			return new Fwoosh();
 		}
 };
-
-#endif

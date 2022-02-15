@@ -1,12 +1,15 @@
-#ifndef WARLOCK_HPP
-# define WARLOCK_HPP
+#pragma once
 
 #include <iostream>
+#include <vector>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 class Warlock {
 	private:
-		std::string name;
-		std::string title;
+		std::string 			name;
+		std::string 			title;
+		std::vector<ASpell*>	spells;
 		
 		Warlock();
 		Warlock(Warlock const &x);
@@ -26,6 +29,46 @@ class Warlock {
 
 		void				introduce() const
 		{	std::cout << name << ": I am " << name << ", " << title << std::endl;	}
-};
 
-#endif
+		void				learnSpell(ASpell *spell)
+		{
+			if (spell)
+			{
+				std::vector<ASpell*>::iterator it = spells.begin();
+			
+				for (; it != spells.end(); it++)
+					if ((*it)->getName() == name)
+						return ;
+
+				spells.push_back(spell);
+			}
+		}
+
+		void				forgetSpell(std::string name)
+		{
+			std::vector<ASpell*>::iterator it = spells.begin();
+			
+			for (; it != spells.end(); it++)
+			{
+				if ((*it)->getName() == name)
+				{
+					spells.erase(it);
+					return ;
+				}
+			}
+		}
+
+		void				launchSpell(std::string name, ATarget &target)
+		{
+			std::vector<ASpell*>::iterator it = spells.begin();
+			
+			for (; it != spells.end(); it++)
+			{
+				if ((*it)->getName() == name)
+				{
+					(*it)->launch(target);
+					return ;
+				}
+			}
+		}
+};
