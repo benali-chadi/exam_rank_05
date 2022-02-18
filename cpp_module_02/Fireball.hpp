@@ -7,7 +7,7 @@ class Fireball: public ASpell {
 		Fireball()
 		{
 			name = "Fireball";
-			effects = "burnt tp a crisp";
+			effects = "burnt to a crisp";
 		}
 
 		Fireball(Fireball const &x) {	*this = x;	}

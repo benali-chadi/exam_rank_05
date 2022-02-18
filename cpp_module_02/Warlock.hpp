@@ -29,7 +29,7 @@ class Warlock {
 		void				setTitle(std::string const &str) {	title = str;	}
 
 		void				introduce() const
-		{	std::cout << name << ": I am " << name << ", " << title << std::endl;	}
+		{	std::cout << name << ": I am " << name << ", " << title << "!" << std::endl;	}
 
 		void				learnSpell(ASpell *spell)
 		{

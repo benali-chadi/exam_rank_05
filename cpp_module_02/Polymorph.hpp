@@ -7,7 +7,7 @@ class Polymorph: public ASpell {
 		Polymorph()
 		{
 			name = "Polymorph";
-			effects = "turned into critter";
+			effects = "turned into a critter";
 		}
 
 		Polymorph(Polymorph const &x) {	*this = x;	}
